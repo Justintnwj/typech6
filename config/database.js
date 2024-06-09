@@ -1,30 +1,30 @@
-const {
-  DB_USERNAME = "postgres",
-  DB_PASSWORD = "123456",
-  DB_HOST = "127.0.0.1",
-  DB_NAME = "database",
-} = process.env;
+const config = {
+  DB_USERNAME: "postgres",
+  DB_PASSWORD: "123456",
+  DB_HOST: "127.0.0.1",
+  DB_NAME: "chapter6",
+};
 
 module.exports = {
   development: {
-    username: DB_USERNAME,
-    password: DB_PASSWORD,
-    database: `${DB_NAME}_development`,
-    host: DB_HOST,
+    username: config.DB_USERNAME,
+    password: config.DB_PASSWORD,
+    database: `${config.DB_NAME}_development`,
+    host: config.DB_HOST,
     dialect: "postgres",
   },
   test: {
-    username: DB_USERNAME,
-    password: DB_PASSWORD,
-    database: `${DB_NAME}_test`,
-    host: DB_HOST,
+    username: config.DB_USERNAME,
+    password: config.DB_PASSWORD,
+    database: `${config.DB_NAME}_test`,
+    host: config.DB_HOST,
     dialect: "postgres",
   },
   production: {
-    username: DB_USERNAME,
-    password: DB_PASSWORD,
-    database: `${DB_NAME}_production`,
-    host: DB_HOST,
+    username: config.DB_USERNAME,
+    password: config.DB_PASSWORD,
+    database: `${config.DB_NAME}_production`,
+    host: config.DB_HOST,
     dialect: "postgres",
   },
 };

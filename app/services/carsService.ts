@@ -1,15 +1,36 @@
-const carsRepository = require("../repositories/carsRepository");
+import carsRepository from "../repositories/carsRepository";
 
-module.exports = {
-  async create (requestBody) {
+type ReqCarsBodyType = {
+  name: string;
+  availability: boolean;
+  price: number;
+  category: string;
+  image: string;
+  start_date: Date;
+  end_date: Date;
+  createBy: string;
+  updateBy: string;
+};
+
+type UpdateCarsType = {
+  availability: boolean;
+  price: number;
+  category: string;
+  image: string;
+  start_date: Date;
+  end_date: Date;
+};
+
+export default {
+  async create(requestBody: ReqCarsBodyType) {
     return carsRepository.create(requestBody);
   },
 
-  async update(name, requestBody) {
+  async update(name: string, requestBody: UpdateCarsType) {
     return carsRepository.update(name, requestBody);
   },
 
-  async delete(name) {
+  async delete(name: string) {
     return carsRepository.delete(name);
   },
 
@@ -41,11 +62,11 @@ module.exports = {
     }
   },
 
-  async findOne(name) {
+  async findOne(name: string) {
     return carsRepository.findOne(name);
   },
 
-  get(id) {
+  get(id: number) {
     return carsRepository.find(id);
-  }
+  },
 };

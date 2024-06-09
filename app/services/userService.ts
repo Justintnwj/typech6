@@ -1,15 +1,20 @@
-const userRepository = require("../repositories/userRepository");
+import userRepository from "../repositories/userRepository";
 
-module.exports = {
-  async create (requestBody) {
+type createUserType = {
+  email: string;
+  encryptedPassword: string;
+};
+
+export default {
+  async create(requestBody: createUserType) {
     return userRepository.create(requestBody);
   },
 
-  async update(id, requestBody) {
+  async update(id: string, requestBody: { role: string }) {
     return userRepository.update(id, requestBody);
   },
 
-  async delete(id) {
+  async delete(id: string) {
     return userRepository.delete(id);
   },
 
@@ -27,15 +32,16 @@ module.exports = {
     }
   },
 
-  get(id) {
-    return userRepository.find(id);
+  async get(id: string) {
+    const user = await userRepository.find(id);
+    return user;
   },
 
-  async findOne(email) {
+  async findOne(email: string) {
     return userRepository.findOne(email);
   },
 
-  async findAdmin(role) {
+  async findAdmin(role: string) {
     return userRepository.findOne(role);
   },
 };
